@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Management - Product List</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .list-group-item a {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Welcome, <%= user.username %></h1>
+        <hr>
+        <p class="text-center">You are logged in as <b><%= user.username %></b></p>
+        <h2 class="text-center">Products (<%= products.length %>)</h2>
+        <ul class="list-group">
+            <% for (var product of products) { %>
+                <li class="list-group-item">
+                    <span><b>Product ID:</b> <a href="/details?_id=<%= product._id %>"><%= product.productId %></a> - <%= product.productName %> (Quantity: <%= product.productQuantity %>, Price: $<%= product.productPrice %>)</span>
+                    <div>
+                        <a href="/edit?_id=<%= product._id %>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/delete?_id=<%= product._id %>" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+        <br>
+        <a href="/create" class="btn btn-primary btn-block">Add Product</a>
+        <a href="/content" class="btn btn-secondary btn-block">Refresh List</a>
+        <p class="text-center mt-3"><a href="/logout" class="btn btn-link">Logout</a></p>
+    </div>
+</body>
+</html>

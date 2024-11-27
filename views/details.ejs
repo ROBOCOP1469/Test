@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Management - Product Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Product Details</h1>
+        <hr>
+        <p class="text-center">Logged in as <b><%= user.username %></b></p>
+        <p><b>Product ID:</b> <%= product.productId %></p>
+        <p><b>Product Name:</b> <%= product.productName %></p>
+        <p><b>Product Quantity:</b> <%= product.productQuantity %></p>
+        <p><b>Product Price:</b> $<%= product.productPrice %></p>
+        <% if (product.photo) { %>
+            <img src="data:image/jpg;base64,<%= product.photo %>" class="img-fluid"><br>
+        <% } %>
+        <br>
+        <a href="/edit?_id=<%= product._id %>" class="btn btn-warning btn-block">Edit</a>
+        <a href="/delete?_id=<%= product._id %>" class="btn btn-danger btn-block">Delete</a>
+        <a href="/" class="btn btn-secondary btn-block">Home</a>
+    </div>
+</body>
+</html>

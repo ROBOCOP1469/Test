@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Management - Edit Product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Edit Product</h1>
+        <hr>
+        <p class="text-center">Logged in as <b><%= user.username %></b>, User ID: <%= user.username %></p>
+        <form action="/update" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="productId">Product ID:</label>
+                <input type="text" class="form-control" id="productId" name="productId" value="<%= product.productId %>" required>
+            </div>
+            <div class="form-group">
+                <label for="productName">Product Name:</label>
+                <input type="text" class="form-control" id="productName" name="productName" value="<%= product.productName %>" required>
+            </div>
+            <div class="form-group">
+                <label for="productQuantity">Product Quantity:</label>
+                <input type="number" class="form-control" id="productQuantity" name="productQuantity" value="<%= product.productQuantity %>" required>
+            </div>
+            <div class="form-group">
+                <label for="filetoupload">Upload Product Photo:</label>
+                <input type="file" class="form-control-file" id="filetoupload" name="filetoupload">
+            </div>
+            <input type="hidden" name="_id" value="<%= product._id %>">
+            <button type="submit" class="btn btn-primary btn-block">Update</button>
+        </form>
+        <br>
+        <a href="/" class="btn btn-secondary btn-block">Home</a>
+    </div>
+</body>
+</html>
